@@ -1,6 +1,6 @@
 import { fn } from "@storybook/test";
 
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { AntButton } from "./components";
 
@@ -23,12 +23,13 @@ import { AntButton } from "./components";
 // };
 
 const meta: Meta<typeof AntButton> = {
-  title: "Example/Button",
+  title: "Example/AntButton",
   component: AntButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
   },
+  tags: ['autodocs'],
   args: { onClick: fn() },
 };
 

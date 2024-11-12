@@ -16,6 +16,7 @@
     "@storybook/addon-essentials": "^8.4.2",
     "@storybook/addon-interactions": "^8.4.2",
     "@storybook/addon-onboarding": "^8.4.2",
+    "@storybook/addon-styling-webpack": "^1.0.1",
     "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
     "@storybook/blocks": "^8.4.2",
     "@storybook/react": "^8.4.2",
@@ -25,6 +26,7 @@
     "storybook": "^8.4.2"
   },
   "dependencies": {
-    "antd": "^5.22.0"
+    "antd": "^5.22.0",
+    "lodash-es": "^4.17.21"
   }
 }

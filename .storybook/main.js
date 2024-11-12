@@ -1,9 +1,23 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
+  // stories: [
+  //   "../stories/**/*.mdx",
+  //   "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  // ],
   stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+  // stories: [
+  //   {
+  //     // 👇 Sets the directory containing your stories
+  //     directory: '../stories',
+  //     // 👇 Storybook will load all files that match this glob
+  //     files: '*.stories.*',
+  //     // 👇 Used when generating automatic titles for your stories
+  //     titlePrefix: 'MyComponents',
+  //   },
+  // ],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",

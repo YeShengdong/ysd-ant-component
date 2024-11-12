@@ -2,7 +2,7 @@ import { fn } from "@storybook/test";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { AntButton } from "./components";
+import { AntButton } from "./";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 // export default {

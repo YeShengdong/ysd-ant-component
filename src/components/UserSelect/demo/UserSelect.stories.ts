@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { UserSelect } from "./components";
+import { UserSelect } from "../";
 import {
   areaListApiData,
   marketBrandListApiData,
@@ -8,7 +8,7 @@ import {
   roleListApiData,
   storeListApiData,
   userListApiData,
-} from "./components/UserSelect/demo/data";
+} from "./data";
 
 const meta: Meta<typeof UserSelect> = {
   title: "Example/UserSelect",
@@ -20,6 +20,7 @@ const meta: Meta<typeof UserSelect> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof UserSelect>;
 
 const getUserList = () => {
@@ -46,7 +47,7 @@ const getMarketBrandList = () => {
   return Promise.resolve(marketBrandListApiData);
 };
 
-export const Primary: Story = {
+export const Demo: Story = {
   args: {
     name: "选择对象",
     queryUserListService: getUserList,

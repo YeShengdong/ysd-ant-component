@@ -375,7 +375,7 @@ export const marketListApiData = {
         value: 12,
       },
       {
-        label: '上海KFC',
+        label: '上海KFO',
         value: 14,
       },
       {
@@ -396,23 +396,23 @@ export const marketBrandListApiData = {
     totalPages: 1,
     data: [
       {
-        label: 'KFC',
+        label: 'KOF',
         value: 1,
       },
       {
-        label: 'PH',
+        label: 'PHW',
         value: 2,
       },
       {
-        label: 'LS',
+        label: 'LSS',
         value: 3,
       },
       {
-        label: 'ED',
+        label: 'EDF',
         value: 5,
       },
       {
-        label: 'TB',
+        label: 'TBD',
         value: 6,
       },
       {
@@ -420,7 +420,7 @@ export const marketBrandListApiData = {
         value: 8,
       },
       {
-        label: 'LAV',
+        label: 'LAVN',
         value: 9,
       },
       {

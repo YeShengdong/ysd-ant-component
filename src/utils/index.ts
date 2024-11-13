@@ -5,3 +5,6 @@ export * from './fisMessage';
 export * from './error';
 export * from './ant';
 export * from './date';
+export * from './array';
+export * from './enum';
+export * from './object';

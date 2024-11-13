@@ -1,11 +1,23 @@
-import { UploadWithAttachmentList } from 'founderintl-fis-components';
-import React, { CSSProperties } from 'react';
-import {
-  downloadAttachmentApiData,
-  queryAttachmentListApiData,
-} from './UploadWithAttachmentListMockData';
+import type { Meta, StoryObj } from "@storybook/react";
+import { UploadWithAttachmentList } from "../";
+import React, { CSSProperties } from "react";
+import { downloadAttachmentApiData, queryAttachmentListApiData } from "./mockData";
+// import previewImage from '../../../../assets/preview-image.jpg';
 
-export default () => {
+const meta: Meta<typeof UploadWithAttachmentList> = {
+  title: "Example/UploadWithAttachmentList",
+  component: UploadWithAttachmentList,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+};
+
+export default meta;
+
+type Story = StoryObj<typeof UploadWithAttachmentList>;
+
+const UploadWithAttachmentListWithHooks = () => {
   const attachmentId = 1;
 
   const rootStyle: CSSProperties = {
@@ -40,7 +52,7 @@ export default () => {
   const createPreviewUrl = (row: any) => {
     console.log('[row]', row);
 
-    return '/founderintl-fis-components/preview-image.jpg';
+    return 'static/media/src/assets/preview-image.jpg';
   };
 
   const attachmentUploadConfig: any = {
@@ -76,4 +88,8 @@ export default () => {
       />
     </div>
   );
+};
+
+export const Demo: Story = {
+  render: () => <UploadWithAttachmentListWithHooks />,
 };

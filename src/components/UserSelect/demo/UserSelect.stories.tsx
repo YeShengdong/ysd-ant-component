@@ -9,6 +9,7 @@ import {
   userListApiData,
 } from "./data";
 import React, { useState } from "react";
+import { User } from "../interface";
 
 const meta: Meta<typeof UserSelect> = {
   title: "Example/UserSelect",
@@ -24,38 +25,34 @@ export default meta;
 type Story = StoryObj<typeof UserSelect>;
 
 const UserSelectWithHooks = () => {
-  const [value, setValue] = useState(null);
-  const [isPrimary, setIsPrimary] = useState(false);
- 
-  const getUserList = () => {
+  const [value, setValue] = useState<User[]>([]);
+
+  const getUserList = (): any => {
     return Promise.resolve(userListApiData);
   };
-  
-  const getStoreList = () => {
+
+  const getStoreList = (): any => {
     return Promise.resolve(storeListApiData);
   };
-  
-  const getRoleList = () => {
+
+  const getRoleList = (): any => {
     return Promise.resolve(roleListApiData);
   };
-  
-  const getAreaList = () => {
+
+  const getAreaList = (): any => {
     return Promise.resolve(areaListApiData);
   };
-  
-  const getMarketList = () => {
+
+  const getMarketList = (): any => {
     return Promise.resolve(marketListApiData);
   };
-  
-  const getMarketBrandList = () => {
+
+  const getMarketBrandList = (): any => {
     return Promise.resolve(marketBrandListApiData);
   };
 
-  const handleChange = (newValue) => {
-    if (!isPrimary) {
-      setIsPrimary(true);
-      setValue(newValue);
-    }
+  const handleChange = (newValue: User[]) => {
+    setValue(newValue);
   };
 
   const userSelectProps = {
@@ -67,12 +64,15 @@ const UserSelectWithHooks = () => {
     queryMarketListService: getMarketList,
     queryMarketBrandListService: getMarketBrandList,
     onChange: handleChange,
-    value
-  }
+    value,
+  };
 
-  return <UserSelect {...userSelectProps} />;
+  return (
+    <div style={{ width: 300 }}>
+      <UserSelect {...userSelectProps} />
+    </div>
+  );
 };
-
 
 export const Demo: Story = {
   render: () => <UserSelectWithHooks />,

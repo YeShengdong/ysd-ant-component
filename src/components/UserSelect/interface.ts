@@ -11,11 +11,16 @@ export interface User {
 export interface StoreContextValue {
   rootFilter: Filter;
   updateRootFilter: (value: Filter) => void;
-  userList: any[];
-  updateUserList: (value: any[]) => void;
-  selectedUserList: any[];
-  updateSelectedUserList: (value: any[]) => void;
+  userList: User[];
+  updateUserList: (value: User[]) => void;
+  selectedUserList: User[];
+  updateSelectedUserList: (value: User[]) => void;
   clearStatus: () => void;
+}
+
+export interface FilterOptions {
+  label: string;
+  value: string | number;
 }
 
 export interface UserSelectProps {
@@ -25,12 +30,12 @@ export interface UserSelectProps {
   name?: string;
   children?: ReactNode;
   isShowSelectedInfo?: boolean;
-  queryUserListService: (params: any, options: any) => Promise<any>;
-  queryStoreListService: (params: any, options: any) => Promise<any>;
-  queryRoleListService: (params: any, options: any) => Promise<any>;
-  queryAreaListService: (params: any, options: any) => Promise<any>;
-  queryMarketListService: (params: any, options: any) => Promise<any>;
-  queryMarketBrandListService: (params: any, options: any) => Promise<any>;
+  queryUserListService: (params: any, options: any) => Promise<User[]>;
+  queryStoreListService: (params: any, options: any) => Promise<FilterOptions>;
+  queryRoleListService: (params: any, options: any) => Promise<FilterOptions>;
+  queryAreaListService: (params: any, options: any) => Promise<FilterOptions>;
+  queryMarketListService: (params: any, options: any) => Promise<FilterOptions>;
+  queryMarketBrandListService: (params: any, options: any) => Promise<FilterOptions>;
 }
 
 export enum FilterParamTypeEnum {

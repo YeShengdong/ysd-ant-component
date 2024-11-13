@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { RestResponse } from '../../constants';
 
 type Filter = Record<string, any>;
 
@@ -30,12 +31,12 @@ export interface UserSelectProps {
   name?: string;
   children?: ReactNode;
   isShowSelectedInfo?: boolean;
-  queryUserListService: (params: any, options: any) => Promise<User[]>;
-  queryStoreListService: (params: any, options: any) => Promise<FilterOptions>;
-  queryRoleListService: (params: any, options: any) => Promise<FilterOptions>;
-  queryAreaListService: (params: any, options: any) => Promise<FilterOptions>;
-  queryMarketListService: (params: any, options: any) => Promise<FilterOptions>;
-  queryMarketBrandListService: (params: any, options: any) => Promise<FilterOptions>;
+  queryUserListService: (params: any, options: any) => Promise<RestResponse>;
+  queryStoreListService: (params: any, options: any) => Promise<RestResponse>;
+  queryRoleListService: (params: any, options: any) => Promise<RestResponse>;
+  queryAreaListService: (params: any, options: any) => Promise<RestResponse>;
+  queryMarketListService: (params: any, options: any) => Promise<RestResponse>;
+  queryMarketBrandListService: (params: any, options: any) => Promise<RestResponse>;
 }
 
 export enum FilterParamTypeEnum {

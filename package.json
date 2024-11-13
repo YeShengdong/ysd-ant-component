@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "antd": "^5.22.0",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "numeral": "^2.0.6"
   }
 }

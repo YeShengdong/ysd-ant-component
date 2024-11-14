@@ -52,7 +52,7 @@ const UploadWithAttachmentListWithHooks = () => {
   const createPreviewUrl = (row: any) => {
     console.log('[row]', row);
 
-    return 'static/media/src/assets/preview-image.jpg';
+    return '/preview-image.jpg';
   };
 
   const attachmentUploadConfig: any = {

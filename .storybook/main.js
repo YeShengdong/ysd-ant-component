@@ -18,6 +18,7 @@ const config = {
   //     titlePrefix: 'MyComponents',
   //   },
   // ],
+  staticDirs: ['../public'],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",

@@ -4,10 +4,7 @@ const config = {
   //   "../stories/**/*.mdx",
   //   "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   // ],
-  stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   // stories: [
   //   {
   //     // 👇 Sets the directory containing your stories
@@ -18,7 +15,7 @@ const config = {
   //     titlePrefix: 'MyComponents',
   //   },
   // ],
-  staticDirs: ['../public'],
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
@@ -29,22 +26,6 @@ const config = {
   ],
   framework: {
     name: "@storybook/react-webpack5",
-    options: {
-      rules: [
-        // Replaces any existing Sass rules with given rules
-        {
-          test: /\.less$/i,
-          use: [
-            "style-loader",
-            "css-loader",
-            {
-              loader: "less-loader",
-              options: { implementation: require.resolve("less") },
-            },
-          ],
-        },
-      ],
-    },
   },
   webpackFinal: async (config) => {
     const lessLoaderChain = {
@@ -63,6 +44,7 @@ const config = {
       ],
     };
     const oneOfRule = config.module.rules.find((rule) => !!rule.oneOf);
+
     if (oneOfRule) {
       oneOfRule.oneOf.unshift(lessLoaderChain);
     } else {
@@ -72,4 +54,5 @@ const config = {
     return config;
   },
 };
+
 export default config;

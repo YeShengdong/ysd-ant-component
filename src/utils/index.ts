@@ -11,3 +11,4 @@ export * from './object';
 export * from './file';
 export * from './storage';
 export * from './download';
+export * from './excel';

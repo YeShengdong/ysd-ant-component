@@ -1,10 +1,14 @@
-import { AnimateLayoutChanges, NewIndexGetter, useSortable } from '@dnd-kit/sortable';
-import { Item } from '../Item';
-import { UniqueIdentifier } from '@dnd-kit/core';
-import { SortableProps } from '../../interface';
-import { ReactNode } from 'react';
-import { calculateWrapperStyle } from '../../utils';
-import { useDomResize } from '../../../../hooks';
+import {
+  AnimateLayoutChanges,
+  NewIndexGetter,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { Item } from "../Item";
+import { UniqueIdentifier } from "@dnd-kit/core";
+import { SortableProps } from "../../interface";
+import React, { ReactNode } from "react";
+import { calculateWrapperStyle } from "../../utils";
+import { useDomResize } from "../../../../hooks";
 
 interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
@@ -18,7 +22,7 @@ interface SortableItemProps {
   onChange?(newItem: Record<string, unknown>): void;
   style(values: any): React.CSSProperties;
   renderItem?(args: any): React.ReactElement;
-  wrapperStyle: SortableProps['wrapperStyle'];
+  wrapperStyle: SortableProps["wrapperStyle"];
   data: Record<string, unknown>;
   containerRef: React.RefObject<HTMLDivElement>;
   minHeight?: number;
@@ -69,7 +73,7 @@ export function SortableItem({
         return;
       }
 
-      const { wrapperStyle = {} }: any = data;
+      const { wrapperStyle = {}, name }: any = data;
 
       const newWrapperStyle = calculateWrapperStyle({
         width,
@@ -79,9 +83,15 @@ export function SortableItem({
         containerRef,
         wrapperStyle,
       });
+      const { height: sectionHeight } = newWrapperStyle;
+      const newContent = (
+        <h2 className="dndPlaceholderName">
+          {name}-模块高度：{sectionHeight ? `${sectionHeight}px` : "auto"}
+        </h2>
+      );
 
-      onChange?.({ ...data, wrapperStyle: newWrapperStyle });
-      node.current.style.removeProperty('width');
+      onChange?.({ ...data, content: newContent, wrapperStyle: newWrapperStyle });
+      node.current.style.removeProperty("width");
       // node.current.style.removeProperty('height');
     },
   });
@@ -115,7 +125,13 @@ export function SortableItem({
       onRemove={onRemove ? () => onRemove(id) : undefined}
       transform={transform}
       transition={transition}
-      wrapperStyle={wrapperStyle?.({ index, isDragging, active, id, customConfig: data })}
+      wrapperStyle={wrapperStyle?.({
+        index,
+        isDragging,
+        active,
+        id,
+        customConfig: data,
+      })}
       listeners={listeners}
       data-index={index}
       data-id={id}

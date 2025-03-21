@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import classNames from 'classnames';
-import type { DraggableSyntheticListeners } from '@dnd-kit/core';
-import type { Transform } from '@dnd-kit/utilities';
+import React, { useEffect } from "react";
+import classNames from "classnames";
+import type { DraggableSyntheticListeners } from "@dnd-kit/core";
+import type { Transform } from "@dnd-kit/utilities";
 
-import { Handle, Remove } from './components';
+import { Handle, Remove } from "./components";
 
-import styles from './item.less';
+import "./item.less";
+import { getPrefixCls } from "../../../../utils";
 
 export interface Props {
   dragOverlay?: boolean;
@@ -34,11 +35,13 @@ export interface Props {
     listeners: DraggableSyntheticListeners;
     ref: React.Ref<HTMLElement>;
     style: React.CSSProperties | undefined;
-    transform: Props['transform'];
-    transition: Props['transition'];
-    value: Props['value'];
+    transform: Props["transform"];
+    transition: Props["transition"];
+    value: Props["value"];
   }): React.ReactElement;
 }
+
+const COMPONENT_CLASS = "dnd-kit-item";
 
 export const Item = React.memo(
   React.forwardRef<HTMLLIElement, Props>(
@@ -66,15 +69,17 @@ export const Item = React.memo(
       },
       ref
     ) => {
+      const prefixCls = getPrefixCls(COMPONENT_CLASS);
+
       useEffect(() => {
         if (!dragOverlay) {
           return;
         }
 
-        document.body.style.cursor = 'grabbing';
+        document.body.style.cursor = "grabbing";
 
         return () => {
-          document.body.style.cursor = '';
+          document.body.style.cursor = "";
         };
       }, [dragOverlay]);
 
@@ -95,33 +100,43 @@ export const Item = React.memo(
       ) : (
         <li
           className={classNames(
-            styles.Wrapper,
-            fadeIn && styles.fadeIn,
-            sorting && styles.sorting,
-            dragOverlay && styles.dragOverlay
+            `${prefixCls}-wrapper`,
+            fadeIn && "fadeIn",
+            sorting && "sorting",
+            dragOverlay && "dragOverlay"
           )}
           style={
             {
               ...wrapperStyle,
-              transition: [transition, wrapperStyle?.transition].filter(Boolean).join(', '),
-              '--translate-x': transform ? `${Math.round(transform.x)}px` : undefined,
-              '--translate-y': transform ? `${Math.round(transform.y)}px` : undefined,
-              '--scale-x': transform?.scaleX ? `${transform.scaleX}` : undefined,
-              '--scale-y': transform?.scaleY ? `${transform.scaleY}` : undefined,
-              '--index': index,
-              '--color': color,
+              transition: [transition, wrapperStyle?.transition]
+                .filter(Boolean)
+                .join(", "),
+              "--translate-x": transform
+                ? `${Math.round(transform.x)}px`
+                : undefined,
+              "--translate-y": transform
+                ? `${Math.round(transform.y)}px`
+                : undefined,
+              "--scale-x": transform?.scaleX
+                ? `${transform.scaleX}`
+                : undefined,
+              "--scale-y": transform?.scaleY
+                ? `${transform.scaleY}`
+                : undefined,
+              "--index": index,
+              "--color": color,
             } as React.CSSProperties
           }
           ref={ref}
         >
           <div
             className={classNames(
-              styles.Item,
-              dragging && styles.dragging,
-              handle && styles.withHandle,
-              dragOverlay && styles.dragOverlay,
-              disabled && styles.disabled,
-              color && styles.color
+              `${prefixCls}-item`,
+              dragging && "dragging",
+              handle && "withHandle",
+              dragOverlay && "dragOverlay",
+              disabled && "disabled",
+              color && "color"
             )}
             style={style}
             data-cypress="draggable-item"
@@ -130,8 +145,10 @@ export const Item = React.memo(
             tabIndex={!handle ? 0 : undefined}
           >
             {value}
-            <span className={styles.Actions}>
-              {onRemove ? <Remove className={styles.Remove} onClick={onRemove} /> : null}
+            <span className={`${prefixCls}-actions`}>
+              {onRemove ? (
+                <Remove className={`${prefixCls}-remove`} onClick={onRemove} />
+              ) : null}
               {handle ? <Handle {...handleProps} {...listeners} /> : null}
             </span>
           </div>

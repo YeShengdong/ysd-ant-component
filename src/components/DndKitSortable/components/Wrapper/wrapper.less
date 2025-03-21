@@ -1,13 +1,19 @@
 /* stylelint-disable */
-.Wrapper {
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  // padding: 20px;
-  justify-content: flex-start;
-  overflow-y: hidden;
+@import "../../../../styles/shared.less";
 
-  &.center {
-    justify-content: center;
+@componentCls: dnd-kit-wrapper;
+
+.prefix({
+  &@{componentCls} {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    justify-content: flex-start;
+    overflow-y: hidden;
+
+    &.center {
+      justify-content: center;
+    }
   }
-}
+});

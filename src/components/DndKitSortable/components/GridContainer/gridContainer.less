@@ -1,16 +1,22 @@
-.gridContainer {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(var(--col-count), 1fr);
-  grid-gap: var(--grid-gap);
-  padding: 0;
-  margin: 0;
+@import '../../../../styles/shared.less';
 
-  @media (max-width: 850px) {
-    grid-template-columns: repeat(calc(var(--col-count) - 1), 1fr);
-  }
+@componentCls: grid-container;
 
-  @media (max-width: 650px) {
-    grid-template-columns: repeat(calc(var(--col-count) - 2), 1fr);
+.prefix({
+  &@{componentCls} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--col-count), 1fr);
+    grid-gap: var(--grid-gap);
+    padding: 0;
+    margin: 0;
+  
+    @media (max-width: 850px) {
+      grid-template-columns: repeat(calc(var(--col-count) - 1), 1fr);
+    }
+  
+    @media (max-width: 650px) {
+      grid-template-columns: repeat(calc(var(--col-count) - 2), 1fr);
+    }
   }
-}
+});

@@ -1,0 +1,30 @@
+@breakpoints: {
+  @mobile: 320px;
+  @tablet: 768px;
+  @desktop: 1024px;
+};
+
+// 响应式Mixin
+.responsive(@deviceOrSize, @styles) {
+  // 处理设备名
+  & when (iskeyword(@deviceOrSize)) {
+    @size: @breakpoints[@@deviceOrSize];
+
+    @media (max-width: @size) {
+      @styles();
+    }
+  }
+
+  // 处理具体尺寸
+  & when (isnumber(@deviceOrSize)) {
+    @media (max-width: @deviceOrSize) {
+      @styles();
+    }
+  }
+}
+
+.responsiveRange(@min, @max, @styles) {
+  @media (min-width: @min) and (max-width: @max) {
+    @styles();
+  }
+}
